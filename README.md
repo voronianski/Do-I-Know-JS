@@ -11,12 +11,12 @@ Every example on some topic stays in separate folder and consists of main `index
 ```bash
 node /patterns/general/hoisting
 
->>> "JavaScript Hoisting"
+-----> "JavaScript Hoisting"
 undefined
 another value
 undefined
 another value
->>> Fin!
+-----> Fin!
 ```
 
 ## Patterns
