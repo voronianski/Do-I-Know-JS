@@ -1,0 +1,29 @@
+{
+  "name": "do-i-know-js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/voronianski/Do-I-Know-JS",
+  "description": "Series of workshops explaining different parts of JavaScript with examples.",
+  "keywords": [
+    "JavaScript",
+    "Fundamentals",
+    "Workshop",
+    "ECMAScript",
+    "HTML5",
+    "Patterns",
+    "Design"
+  ],
+  "authors": [
+    "Dmitri Voronianski <dmitri.voronianski@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "console-polyfill": "~0.1.2"
+  }
+}
