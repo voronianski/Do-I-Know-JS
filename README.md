@@ -4,12 +4,12 @@
 
 ## Examples Structure
 
-Every example on some topic stays in separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be in some cases easily executed via command-line as well. 
+Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be in some cases easily executed via command-line as well. 
 
 ```bash
 node /patterns/general/hoisting
 
------> JavaScript Hoisting
+-----> Hoisting
 undefined
 another value
 undefined

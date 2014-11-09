@@ -1,4 +1,4 @@
-console.info('-----> JavaScript Hoisting');
+console.info('-----> Hoisting');
 
 /*
  * Variables (and function) declarations are hoisted at the top within its current scope.
