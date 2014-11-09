@@ -4,7 +4,7 @@
 
 ## Usage
 
-Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be in some cases easily executed via command-line as well. 
+Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be easily executed via command-line as well. 
 
 ```bash
 node /patterns/general/hoisting
@@ -26,4 +26,6 @@ bower install
 ## Patterns
 
 ## APIs
+
+## References
 
