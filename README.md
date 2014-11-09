@@ -1,4 +1,4 @@
-# Do I Know JS?
+# Do I Know ![](http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png) JS?
 
 > Series of workshops related to different parts of JavaScript peculiarities and development.
 
