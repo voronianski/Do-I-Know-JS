@@ -1,4 +1,4 @@
-console.info('-----> The Factory Pattern');
+console.info('-----> Factory Pattern');
 
 /**
  * Factory pattern provides generic interface for creating objects.

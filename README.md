@@ -13,6 +13,7 @@
         - [Structural]()
             - [Facade]()
         - [Creational]()
+            - [Constructor]()
             - [Factory]()
 - [APIs](#apis)
 - [References](#references)

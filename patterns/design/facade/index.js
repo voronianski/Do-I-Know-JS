@@ -1,4 +1,4 @@
-console.info('-----> The Facade Pattern');
+console.info('-----> Facade Pattern');
 
 /**
  * Facade pattern simplifies interface and provides abstractions of internal methods to the public use.
