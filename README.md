@@ -2,6 +2,19 @@
 
 > <img src="http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png" width="80" align="right"> Series of workshops with examples related to different parts of JavaScript's peculiarities and development. 
 
+- [Usage](#usage)
+- [Patterns](#patterns)
+    - [General](#general)
+        - [Hoisting]()
+        - [Access Global]()
+    - [Design]
+        - [Structural]()
+            - [Facade]()
+        - [Creational]()
+            - [Factory]()
+- [APIs](#apis)
+- [References](#references)
+
 ## Usage
 
 Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be easily executed via command-line as well. 
@@ -17,7 +30,7 @@ another value
 -----> Fin!
 ```
 
-For usage in browser run inside repo:
+For usage in the browser run inside repo:
 
 ```bash
 bower install
