@@ -2,12 +2,14 @@
 
 > <img src="http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png" width="80" align="right"> Series of workshops with examples related to different parts of JavaScript's peculiarities and development. 
 
+## Contents
+
 - [Usage](#usage)
 - [Patterns](#patterns)
-    - [General](#general)
+    - [General Patterns](#general)
         - [Hoisting]()
         - [Access Global]()
-    - [Design]
+    - [Design Patterns]()
         - [Structural]()
             - [Facade]()
         - [Creational]()
