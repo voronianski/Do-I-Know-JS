@@ -15,6 +15,7 @@
         - [Creational]()
             - [Constructor]()
             - [Factory]()
+            - [Singleton]()
 - [APIs](#apis)
 - [References](#references)
 
