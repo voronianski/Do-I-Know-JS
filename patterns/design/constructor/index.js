@@ -19,7 +19,7 @@ function Car (model, year) {
     this.year = year;
 }
 
-// Methods on prototype get shared across all instances
+// methods on prototype get shared across all instances
 // (important if performance is crucial)
 Car.prototype.toString = function () {
     return this.model + ' was produced in ' + this.year;
@@ -43,6 +43,7 @@ function Plane (model, year) {
 
     var that = {};
 
+    // redefined each of the new objects created
     that.toString = function () {
         return _model + ' was produced in ' + _year;
     };
