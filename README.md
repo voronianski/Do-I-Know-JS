@@ -1,5 +1,7 @@
 # Do I Know JS?
 
+![](http://img.shields.io/badge/status-in%20progress-green.svg?style=flat)
+
 > <img src="http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png" width="80" align="right"> Series of workshops with examples related to different JavaScript good parts and design recipies. 
 
 ## Contents
