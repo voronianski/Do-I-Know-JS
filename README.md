@@ -1,6 +1,6 @@
 # Do I Know JS?
 
-> <img src="http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png" width="80" align="right"> Series of workshops with examples related to different parts of JavaScript's peculiarities and development. 
+> <img src="http://www.w3devcampus.com/wp-content/uploads/logoAndOther/logo_JavaScript.png" width="80" align="right"> Series of workshops with examples related to different JavaScript good parts and design recipies. 
 
 ## Contents
 
@@ -24,7 +24,7 @@
 
 ## Usage
 
-Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be easily executed via command-line as well. 
+Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be easily executed via command-line. 
 
 ```bash
 node /patterns/general/hoisting
@@ -37,7 +37,7 @@ another value
 -----> Fin!
 ```
 
-For usage in the browser run inside repo:
+For usage in the browser run don't forget to run inside repo:
 
 ```bash
 bower install
