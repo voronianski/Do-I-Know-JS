@@ -16,6 +16,9 @@
             - [Constructor]()
             - [Factory]()
             - [Singleton]()
+        - [Behavioral]()
+            - [Observer]()
+            - [Mediator]()
 - [APIs](#apis)
 - [References](#references)
 
