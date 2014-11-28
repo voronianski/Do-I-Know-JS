@@ -37,7 +37,7 @@ another value
 -----> Fin!
 ```
 
-For usage in the browser run don't forget to run inside repo:
+For usage in the browser don't forget to run inside repo:
 
 ```bash
 bower install
