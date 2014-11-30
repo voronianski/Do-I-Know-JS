@@ -9,9 +9,55 @@ console.log('-----> Observer Patterns');
  * https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations
  */
 
-var observer = {};
+// Subject (maintains list of observers, adding and removing them)
+function Subject () {
+    this.observers = [];
+}
+Subject.prototype.addObserver = function (observer) {
+    this.observers.push(observer);
+};
+Subject.prototype.removeObserver = function (observer) {
+    for (var i = 0, l = this.observers.length; i < l; i++) {
+        if (this.observers[i] === observer) {
+            this.observers.splice(i, 1);
+        }
+    }
+};
+Subject.prototype.notify = function () {
+    for (var i = 0, l = this.observers.length; i < l; i++) {
+        this.observers[i].update.apply(this, arguments);
+    }
+};
 
-// Publish-Subscribe
+// Observer (provides an update interface for objects that need to be notified of subject's changes)
+function Observer () {
+    this.update = function () {
+        console.log('default');
+    };
+}
+
+// Concrete Subject (broadcasts notifications to observers)
+var newspaper = new Subject();
+newspaper.newIssue = function () {
+    var title = 'BREAKING! Martians do it better!';
+    this.notify(title);
+};
+
+// Concrete Observer (implements the update interface to ensure consistent state with subject)
+var jack = new Observer();
+jack.update = function (what) {
+    console.log('I just read "' + what + '".');
+};
+var jill = new Observer();
+jill.update = function (what) {
+    console.log('Do you heard that ' + what);
+};
+
+newspaper.addObserver(jack);
+newspaper.addObserver(jill);
+newspaper.newIssue();
+
+// Publish-Subscribe Pattern
 var pubsub = {
     topics: {},
 
