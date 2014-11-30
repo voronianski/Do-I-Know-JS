@@ -50,14 +50,18 @@ jack.update = function (what) {
 };
 var jill = new Observer();
 jill.update = function (what) {
-    console.log('Do you heard that ' + what);
+    console.log('Do you heard that "' + what + '"?');
 };
 
 newspaper.addObserver(jack);
 newspaper.addObserver(jill);
 newspaper.newIssue();
 
-// Publish-Subscribe Pattern
+/**
+ * Publish-Subscribe Pattern
+ * - uses topic/event channel
+ * - decouples dependencies between subscriber and publisher
+ */
 var pubsub = {
     topics: {},
 
@@ -100,10 +104,24 @@ var pubsub = {
     }
 };
 
-var handler = function (data) {
-    console.log('Received new message "%s" from %s', data.text, data.from);
+var logger = {
+    handler: function (data) {
+        console.log('Received new message "%s" from %s', data.text, data.from);
+    },
+    init: function () {
+        pubsub.subscribe('message', this.handler);
+    },
+    close: function () {
+        pubsub.unsubscribe('message', this.handler);
+    }
 };
-pubsub.subscribe('message', handler);
-pubsub.publish('message', {from: 'hello@gmail.com', text: 'How are you?'});
-pubsub.unsubscribe('message', handler);
-pubsub.publish('message');
+var gmail = {
+    message: function () {
+        pubsub.publish('message', {from: 'hello@gmail.com', text: 'How are you?'});
+    }
+};
+
+logger.init();
+gmail.message();
+logger.close();
+gmail.message();
