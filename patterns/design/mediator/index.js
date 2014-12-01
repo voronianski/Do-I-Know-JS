@@ -1,7 +1,8 @@
 console.log('-----> Mediator Pattern');
 
 /**
- * Mediator coordinates interaction between multiple objects and provides loose coupling between them.
+ * Mediator coordinates interaction between multiple objects (controlling the workflow).
+ * Provides loose coupling between objects as they don't need to refer on each other explicitly.
  * http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript
  */
 
@@ -59,6 +60,8 @@ var airport = {
     },
 
     register: function (plane) {
+        // handing mediator reference to child objects
+        // could be implemented with pub/sub, etc.
         plane.airport = this;
 
         var runway = this.checkRunway();

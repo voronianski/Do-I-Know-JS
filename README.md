@@ -25,6 +25,7 @@
         - [Behavioral]()
             - [Observer]()
             - [Mediator]()
+            - [Iterator]()
 - [APIs](#apis)
 - [References](#references)
 
