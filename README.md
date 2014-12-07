@@ -35,7 +35,7 @@
 Every example on some topic stays in a separate folder and consists of main `index.html` file that can be opened in the browser and `index.js` that can be easily executed via command-line. 
 
 ```bash
-node /patterns/general/hoisting
+node /patterns/general/hoisting/hoisting.js
 
 -----> Hoisting
 undefined
@@ -45,7 +45,9 @@ another value
 -----> Fin!
 ```
 
-For usage in the browser don't forget to run inside repo:
+Or just open `index.html` in your favorite browser and observe dev tools console.
+
+Before usage in the browser don't forget to run inside repo:
 
 ```bash
 bower install
