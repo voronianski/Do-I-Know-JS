@@ -7,8 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "docs": "node ./bin/docs"
+    "docs-design": "docco patterns/design/**/*.js -c assets/docco.css -o docs/patterns/design",
+    "docs-general": ""
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,4 @@
     "url": "https://github.com/voronianski/Do-I-Know-JS/issues"
   },
   "homepage": "https://github.com/voronianski/Do-I-Know-JS",
-  "devDependencies": {
-    "docco": "^0.6.3"
-  }
 }

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Iterator</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="constructor.html">
+                constructor.js
+              </a>
+            
+              
+              <a class="source" href="facade.html">
+                facade.js
+              </a>
+            
+              
+              <a class="source" href="factory.html">
+                factory.js
+              </a>
+            
+              
+              <a class="source" href="iterator.html">
+                iterator.js
+              </a>
+            
+              
+              <a class="source" href="mediator.html">
+                mediator.js
+              </a>
+            
+              
+              <a class="source" href="observer.html">
+                observer.js
+              </a>
+            
+              
+              <a class="source" href="singleton.html">
+                singleton.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="iterator">Iterator</h1>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'-----&gt; Iterator Pattern'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Iterator provides an interface to traverse through elements of a collection.</p>
+<ul>
+<li><a href="http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#iteratorpatternjquery">Addy Osmani “Javascript Design Patterns”</a></li>
+</ul>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Implemented using Array as a list.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Iterator</span> <span class="hljs-params">(list)</span> </span>{
+     <span class="hljs-keyword">this</span>.list = list || [];
+     <span class="hljs-keyword">this</span>.listSize = list.length;
+     <span class="hljs-keyword">this</span>.pos = <span class="hljs-number">0</span>;
+}
+
+Iterator.prototype.next = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.hasNext()) {
+        <span class="hljs-keyword">return</span> ++<span class="hljs-keyword">this</span>.pos;
+    }
+};
+
+Iterator.prototype.hasNext = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.pos &lt; <span class="hljs-keyword">this</span>.listSize;
+};
+
+Iterator.prototype.prev = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.hasPrev()) {
+        <span class="hljs-keyword">return</span> --<span class="hljs-keyword">this</span>.pos;
+    }
+};
+
+Iterator.prototype.hasPrev = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.pos &gt; <span class="hljs-number">0</span>;
+};
+
+Iterator.prototype.front = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">this</span>.pos = <span class="hljs-number">0</span>;
+};
+
+Iterator.prototype.end = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">this</span>.pos = <span class="hljs-keyword">this</span>.listSize-<span class="hljs-number">1</span>;
+};
+
+Iterator.prototype.current = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.pos;
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Being an example of <a href="/facade.html">facade</a> as well, this method stops iteration if the <code>callback</code> function returns a truthy value.
+In the same manner reverse iteration could be implemented.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Iterator.prototype.each = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(callback)</span> </span>{
+    <span class="hljs-keyword">var</span> item;
+    <span class="hljs-keyword">var</span> index;
+
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">this</span>.front(); <span class="hljs-keyword">this</span>.hasNext(); <span class="hljs-keyword">this</span>.next()) {
+        index = <span class="hljs-keyword">this</span>.current();
+        item = <span class="hljs-keyword">this</span>.list[index];
+
+        <span class="hljs-keyword">if</span> (item &amp;&amp; callback(item, index)) {
+            <span class="hljs-keyword">break</span>;
+        }
+    }
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h3 id="examples">Examples</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> things = [<span class="hljs-string">'coub'</span>, <span class="hljs-string">'pen'</span>, <span class="hljs-string">'picture'</span>, <span class="hljs-string">'candies'</span>, <span class="hljs-string">'ipad mini'</span>];
+<span class="hljs-keyword">var</span> box = <span class="hljs-keyword">new</span> Iterator(things);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Iterating while it’s possible.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">while</span> (box.hasNext()) {
+    <span class="hljs-built_in">console</span>.log(things[box.current()]);
+    box.next();
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Constrolling iteration by hand.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>box.front();
+<span class="hljs-built_in">console</span>.log(things[box.current()]); <span class="hljs-comment">// coub</span>
+box.end();
+<span class="hljs-built_in">console</span>.log(things[box.current()]); <span class="hljs-comment">// ipad mini</span>
+box.prev();
+<span class="hljs-built_in">console</span>.log(things[box.current()]); <span class="hljs-comment">// candies</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Using facade.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>box.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(thing, index)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(thing, index);
+});
+box.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(thing, index)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(thing, index);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>It will stop iterating after <code>&#39;pen&#39;</code> output.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (thing === <span class="hljs-string">'pen'</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

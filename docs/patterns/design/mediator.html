@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Mediator</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="constructor.html">
+                constructor.js
+              </a>
+            
+              
+              <a class="source" href="facade.html">
+                facade.js
+              </a>
+            
+              
+              <a class="source" href="factory.html">
+                factory.js
+              </a>
+            
+              
+              <a class="source" href="iterator.html">
+                iterator.js
+              </a>
+            
+              
+              <a class="source" href="mediator.html">
+                mediator.js
+              </a>
+            
+              
+              <a class="source" href="observer.html">
+                observer.js
+              </a>
+            
+              
+              <a class="source" href="singleton.html">
+                singleton.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="mediator">Mediator</h1>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">console</span>.log(<span class="hljs-string">'-----&gt; Mediator Pattern'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Mediator coordinates interaction between multiple objects (controlling the workflow).
+It provides loose coupling between objects as they don’t need to refer on each other explicitly.</p>
+<ul>
+<li><a href="http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript">Addy Osmani “Javascript Design Patterns”</a></li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Plane</span> <span class="hljs-params">(from, to)</span> </span>{
+    <span class="hljs-keyword">this</span>.from = from;
+    <span class="hljs-keyword">this</span>.to = to;
+    <span class="hljs-keyword">this</span>.airport = <span class="hljs-literal">null</span>;
+}
+Plane.prototype.arrive = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(runwayId)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Plane from %s arrived on %s runway'</span>, <span class="hljs-keyword">this</span>.from, runwayId);
+};
+Plane.prototype.departure = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(runwayId)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Plane to %s departured from %s runway'</span>, <span class="hljs-keyword">this</span>.to, runwayId);
+};
+Plane.prototype.wait = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Plane from %s to %s waits for free runway..'</span>, self.from, self.to);
+
+    <span class="hljs-keyword">var</span> interval = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> runway = self.airport.checkRunway(self);
+        <span class="hljs-keyword">if</span> (runway) {
+            self.airport.land(self, runway);
+            clearInterval(interval);
+        }
+    }, <span class="hljs-number">300</span>);
+};
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Runway</span> <span class="hljs-params">(id)</span> </span>{
+    <span class="hljs-keyword">this</span>.busy = <span class="hljs-literal">false</span>;
+    <span class="hljs-keyword">this</span>.id = <span class="hljs-string">'R'</span>+id;
+}
+Runway.prototype.block = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">this</span>.busy = <span class="hljs-literal">true</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Runway %s won\'t be available for planes'</span>, <span class="hljs-keyword">this</span>.id);
+};
+Runway.prototype.unblock = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">this</span>.busy = <span class="hljs-literal">false</span>;
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Runway %s is ready to host planes'</span>, <span class="hljs-keyword">this</span>.id);
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Mediator implemented as airport simulation.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> airport = {
+    name: <span class="hljs-string">'Paris'</span>,
+
+    runways: [],
+
+    maxRunways: <span class="hljs-number">3</span>,
+
+    startWork: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">this</span>.maxRunways; i++) {
+            <span class="hljs-keyword">var</span> runway = <span class="hljs-keyword">new</span> Runway(i+<span class="hljs-number">1</span>);
+            <span class="hljs-keyword">this</span>.runways.push(runway);
+        }
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'%s airport starts its work!'</span>, <span class="hljs-keyword">this</span>.name);
+    },
+
+    register: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(plane)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Handing mediator reference to child objects.
+This could be implemented in different ways (including pub/sub, etc.).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        plane.airport = <span class="hljs-keyword">this</span>;
+
+        <span class="hljs-keyword">var</span> runway = <span class="hljs-keyword">this</span>.checkRunway();
+        <span class="hljs-keyword">if</span> (!runway) {
+            plane.wait();
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">this</span>.land(plane, runway);
+        }
+    },
+
+    land: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(plane, runway)</span> </span>{
+        runway.block();
+
+        <span class="hljs-keyword">if</span> (plane.from === <span class="hljs-keyword">this</span>.name) {
+            plane.departure(runway.id);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (plane.to === <span class="hljs-keyword">this</span>.name) {
+            plane.arrive(runway.id);
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>We need some time to clean airpot’s runway</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+            runway.unblock();
+        }, <span class="hljs-number">500</span>);
+    },
+
+    checkRunway: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">var</span> i = <span class="hljs-keyword">this</span>.runways.length;
+        <span class="hljs-keyword">while</span> (i--) {
+            <span class="hljs-keyword">var</span> runway = <span class="hljs-keyword">this</span>.runways[i];
+            <span class="hljs-keyword">if</span> (!runway.busy) {
+                <span class="hljs-keyword">return</span> runway;
+            }
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+};</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <h3 id="example">Example</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>airport.startWork();
+
+airport.register(<span class="hljs-keyword">new</span> Plane(<span class="hljs-string">'Tokyo'</span>, <span class="hljs-string">'Paris'</span>));
+airport.register(<span class="hljs-keyword">new</span> Plane(<span class="hljs-string">'London'</span>, <span class="hljs-string">'Paris'</span>));
+airport.register(<span class="hljs-keyword">new</span> Plane(<span class="hljs-string">'New York'</span>, <span class="hljs-string">'Paris'</span>));</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>This plane will wait until one of the runways will be free.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>airport.register(<span class="hljs-keyword">new</span> Plane(<span class="hljs-string">'Amsterdam'</span>, <span class="hljs-string">'Paris'</span>));
+
+setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    airport.register(<span class="hljs-keyword">new</span> Plane(<span class="hljs-string">'Paris'</span>, <span class="hljs-string">'Kiev'</span>));
+}, <span class="hljs-number">1000</span>);</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
