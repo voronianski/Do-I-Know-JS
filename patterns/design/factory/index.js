@@ -1,10 +1,8 @@
+// # Factory
 console.info('-----> Factory Pattern');
 
-/**
- * Factory pattern provides generic interface for creating objects.
- * We inform factory with object type and it delegates object creation.
- * http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#factorypatternjavascript
- */
+// Factory pattern provides generic interface for creating objects.
+//  - [Addy Osmani "Javascript Design Patterns"](http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#factorypatternjavascript)
 
 var factory = {};
 
@@ -17,19 +15,21 @@ factory.Trousers = function (opts) {
     this.style = opts.style || 'classic';
 };
 
+// We inform factory with object type and it delegates object creation.
 factory.create = function (type, opts) {
     return new factory[type](opts);
 };
 
+// ### Examples
 var shirt = factory.create('Shirt', {color: 'pink', size: 'XL'});
 console.log(shirt instanceof factory.Shirt); // true
 
-// Object is a built-in factory
+// Javascript `Object` constructor is a built-in factory.
 var o = new Object();
 var n = new Object(1);
 var s = new Object('s');
 var b = new Object(true);
-console.log(o instanceof Object);
-console.log(n instanceof Number);
-console.log(s instanceof String);
-console.log(b instanceof Boolean);
+console.log(o instanceof Object); // true
+console.log(n instanceof Number); // true
+console.log(s instanceof String); // true
+console.log(b instanceof Boolean); // true

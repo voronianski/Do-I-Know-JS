@@ -23,9 +23,10 @@
             - [Factory]()
             - [Singleton]()
         - [Behavioral]()
-            - [Observer]()
-            - [Mediator]()
+            - [Command]()
             - [Iterator]()
+            - [Mediator]()
+            - [Observer]()
 - [APIs](#apis)
 - [References](#references)
 
@@ -53,6 +54,8 @@ bower install
 ## Patterns
 
 ## APIs
+
+## Contributing
 
 ## References
 

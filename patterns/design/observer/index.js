@@ -1,15 +1,14 @@
+// # Observer
 console.log('-----> Observer Patterns');
 
-/**
- * Observer provides a subject object that maintains a list of subscribers (observers)
- * and automatically notifies them when any changes occur by broadcasting notification,
- * also includes subset pattern known as Publish-Subscribe.
- * http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#observerpatternjavascript
- * http://robdodson.me/blog/2012/08/16/javascript-design-patterns-observer/
- * https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations
- */
+// Observer provides a subject object that maintains a list of subscribers (observers)
+// and automatically notifies them when any changes occur by broadcasting notification,
+// also includes subset pattern known as Publish-Subscribe.
+// - [Addy Osmani "Javascript Design Patterns"](http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#observerpatternjavascript)
+// - [Rob Dodson "Javascript Observer Pattern"](http://robdodson.me/blog/2012/08/16/javascript-design-patterns-observer)
+// - ["Comparison between pattern implementations"](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
 
-// Subject (maintains list of observers, adding and removing them)
+// **Subject** - maintains list of observers, adding and removing them.
 function Subject () {
     this.observers = [];
 }
@@ -29,21 +28,21 @@ Subject.prototype.notify = function () {
     }
 };
 
-// Observer (provides an update interface for objects that need to be notified of subject's changes)
+// **Observer** - provides an update interface for objects that need to be notified of subject's changes.
 function Observer () {
     this.update = function () {
         console.log('default');
     };
 }
 
-// Concrete Subject (broadcasts notifications to observers)
+// **Concrete Subject** - broadcasts notifications to observers.
 var newspaper = new Subject();
 newspaper.newIssue = function () {
     var title = 'BREAKING! Martians do it better!';
     this.notify(title);
 };
 
-// Concrete Observer (implements the update interface to ensure consistent state with subject)
+// **Concrete Observers** - implement the update interface to ensure consistent state with subject.
 var jack = new Observer();
 jack.update = function (what) {
     console.log('I just read "' + what + '".');
@@ -53,15 +52,23 @@ jill.update = function (what) {
     console.log('Do you heard that "' + what + '"?');
 };
 
+// ### Example
 newspaper.addObserver(jack);
 newspaper.addObserver(jill);
+
+// Both observers will be notified on new issue:
+//
+// `I just read "BREAKING! Martians do it better!".`
+//
+// `Do you heard that "BREAKING! Martians do it better!"?`
 newspaper.newIssue();
 
-/**
- * Publish-Subscribe Pattern
- * - uses topic/event channel
- * - decouples dependencies between subscriber and publisher
- */
+// Publish-Subscribe Pattern
+// ---
+//
+// Differencies:
+// - uses topic/event channel
+// - decouples dependencies between subscriber and publisher
 var pubsub = {
     topics: {},
 
@@ -104,19 +111,23 @@ var pubsub = {
     }
 };
 
+// ### Example
 var logger = {
     handler: function (data) {
         console.log('Received new message "%s" from %s', data.text, data.from);
     },
     init: function () {
+        // Start listen to the topic.
         pubsub.subscribe('message', this.handler);
     },
     close: function () {
+        // Stop listen to the topic.
         pubsub.unsubscribe('message', this.handler);
     }
 };
 var gmail = {
     message: function () {
+        // All subscibers that listen to `message` topic will be notified with the data.
         pubsub.publish('message', {from: 'hello@gmail.com', text: 'How are you?'});
     }
 };

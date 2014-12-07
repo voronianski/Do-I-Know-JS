@@ -1,10 +1,9 @@
+// # Mediator
 console.log('-----> Mediator Pattern');
 
-/**
- * Mediator coordinates interaction between multiple objects (controlling the workflow).
- * Provides loose coupling between objects as they don't need to refer on each other explicitly.
- * http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript
- */
+// Mediator coordinates interaction between multiple objects (controlling the workflow).
+// It provides loose coupling between objects as they don't need to refer on each other explicitly.
+// - [Addy Osmani "Javascript Design Patterns"](http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#mediatorpatternjavascript)
 
 function Plane (from, to) {
     this.from = from;
@@ -43,7 +42,7 @@ Runway.prototype.unblock = function () {
     console.log('Runway %s is ready to host planes', this.id);
 };
 
-// Mediator
+// Mediator implemented as airport simulation.
 var airport = {
     name: 'Paris',
 
@@ -60,8 +59,8 @@ var airport = {
     },
 
     register: function (plane) {
-        // handing mediator reference to child objects
-        // could be implemented with pub/sub, etc.
+        // Handing mediator reference to child objects.
+        // This could be implemented in different ways (including pub/sub, etc.).
         plane.airport = this;
 
         var runway = this.checkRunway();
@@ -81,7 +80,7 @@ var airport = {
             plane.arrive(runway.id);
         }
 
-        // we need some time to clean runway
+        // We need some time to clean airpot's runway
         setTimeout(function () {
             runway.unblock();
         }, 500);
@@ -99,11 +98,14 @@ var airport = {
     }
 };
 
+// ### Example
 airport.startWork();
 
 airport.register(new Plane('Tokyo', 'Paris'));
 airport.register(new Plane('London', 'Paris'));
 airport.register(new Plane('New York', 'Paris'));
+
+// This plane will wait until one of the runways will be free.
 airport.register(new Plane('Amsterdam', 'Paris'));
 
 setTimeout(function () {

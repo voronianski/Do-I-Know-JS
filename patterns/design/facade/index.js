@@ -1,20 +1,19 @@
+// # Facade
 console.info('-----> Facade Pattern');
 
-/**
- * Facade pattern simplifies interface and provides abstractions of internal methods to the public use.
- * http://addyosmani.com/resources/essentialjsdesignpatterns/book/#facadepatternjavascript
- */
+// Facade pattern simplifies interface and provides abstractions of internal methods to the public use.
+// - [Addy Osmani "Javascript Design Patterns"](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#facadepatternjavascript)
+
 
 var mobileEvent = {
     // Facade knows which internals are responsible for request
-    // and delegates user's request to appropriate internals (subsystems)
+    // and delegates user's request to appropriate internals (subsystems).
     stop: function (e) {
         e.preventDefault();
         e.stopPropagation();
     }
 };
 
-// Used within a module
 var module = (function (global, undefined) {
 
     var _private = {
@@ -31,6 +30,7 @@ var module = (function (global, undefined) {
     };
 
     return {
+        // Used within a module.
         facade: function (opts) {
             _private.set(opts.val);
             _private.get();
@@ -41,5 +41,5 @@ var module = (function (global, undefined) {
     };
 })(this);
 
-// This will trigger a set of private behaviors within the module but the user isn't concerned with this
+// This will trigger a set of private behaviors within the module but the user isn't concerned with this.
 module.facade({val: 10, run: true});

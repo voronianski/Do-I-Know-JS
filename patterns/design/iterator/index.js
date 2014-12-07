@@ -1,11 +1,11 @@
+// # Iterator
 console.log('-----> Iterator Pattern');
 
-/**
- * Iterator provides an interface to traverse through elements of a collection
- * http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#iteratorpatternjquery
- */
+// Iterator provides an interface to traverse through elements of a collection.
+// - [Addy Osmani "Javascript Design Patterns"](http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#iteratorpatternjquery)
 
-// implemented using Array as a list
+
+// Implemented using Array as a list.
 function Iterator (list) {
      this.list = list || [];
      this.listSize = list.length;
@@ -44,11 +44,12 @@ Iterator.prototype.current = function () {
     return this.pos;
 };
 
-// facade, stops iteration if the callback returns a truthy value
-// in the same manner reverse iteration could be implemented
+// Being an example of [facade](/facade.html) as well, this method stops iteration if the `callback` function returns a truthy value.
+// In the same manner reverse iteration could be implemented.
 Iterator.prototype.each = function (callback) {
     var item;
     var index;
+
     for (this.front(); this.hasNext(); this.next()) {
         index = this.current();
         item = this.list[index];
@@ -59,16 +60,17 @@ Iterator.prototype.each = function (callback) {
     }
 };
 
+// ### Examples
 var things = ['coub', 'pen', 'picture', 'candies', 'ipad mini'];
 var box = new Iterator(things);
 
-// iterating while it's possible
+// Iterating while it's possible.
 while (box.hasNext()) {
     console.log(things[box.current()]);
     box.next();
 }
 
-// iterate by hand
+// Constrolling iteration by hand.
 box.front();
 console.log(things[box.current()]); // coub
 box.end();
@@ -76,11 +78,12 @@ console.log(things[box.current()]); // ipad mini
 box.prev();
 console.log(things[box.current()]); // candies
 
-// using facade
+// Using facade.
 box.each(function (thing, index) {
     console.log(thing, index);
 });
 box.each(function (thing, index) {
     console.log(thing, index);
+    // It will stop iterating after `'pen'` output.
     if (thing === 'pen') return true;
 });
