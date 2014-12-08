@@ -55,7 +55,7 @@ bower install
 
 ## Documentation
 
-Every implementation and examples are well documented and could be observed online via http://labs.voronianski.com/do-i-know-js.
+Every implementation and examples are well documented and could be observed online via **http://labs.voronianski.com/do-i-know-js**.
 
 [![](https://raw.githubusercontent.com/voronianski/Do-I-Know-JS/master/assets/doc-screen-browser.png)](http://labs.voronianski.com/do-i-know-js)
 
