@@ -55,7 +55,7 @@ bower install
 
 ## Patterns
 
-![](https://raw.githubusercontent.com/voronianski/Do-I-Know-JS/master/assets/doc-screen.png)
+[![](https://raw.githubusercontent.com/voronianski/Do-I-Know-JS/master/assets/doc-screen.png)](labs.voronianski.com/do-i-know-js)
 
 ## APIs
 
