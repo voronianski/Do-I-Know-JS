@@ -53,9 +53,13 @@ Before usage in the browser don't forget to run inside repo:
 bower install
 ```
 
-## Patterns
+## Documentation
 
-[![](https://raw.githubusercontent.com/voronianski/Do-I-Know-JS/master/assets/doc-screen.png)](http://labs.voronianski.com/do-i-know-js)
+Every implementation example is documented and could be accessed online - http://labs.voronianski.com/do-i-know-js
+
+[![](https://raw.githubusercontent.com/voronianski/Do-I-Know-JS/master/assets/doc-screen-browser.png)](http://labs.voronianski.com/do-i-know-js)
+
+## Patterns
 
 ## APIs
 
