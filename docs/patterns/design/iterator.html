@@ -237,9 +237,7 @@ box.prev();
             
             <div class="content"><div class='highlight'><pre>box.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(thing, index)</span> </span>{
     <span class="hljs-built_in">console</span>.log(thing, index);
-});
-box.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(thing, index)</span> </span>{
-    <span class="hljs-built_in">console</span>.log(thing, index);</pre></div></div>
+});</pre></div></div>
             
         </li>
         
@@ -254,7 +252,9 @@ box.each(<span class="hljs-function"><span class="hljs-keyword">function</span> 
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (thing === <span class="hljs-string">'pen'</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+            <div class="content"><div class='highlight'><pre>box.each(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(thing, index)</span> </span>{
+    <span class="hljs-built_in">console</span>.log(thing, index);
+    <span class="hljs-keyword">if</span> (thing === <span class="hljs-string">'pen'</span>) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
 });</pre></div></div>
             
         </li>

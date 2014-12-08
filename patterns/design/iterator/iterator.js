@@ -82,8 +82,8 @@ console.log(things[box.current()]); // candies
 box.each(function (thing, index) {
     console.log(thing, index);
 });
+// It will stop iterating after `'pen'` output.
 box.each(function (thing, index) {
     console.log(thing, index);
-    // It will stop iterating after `'pen'` output.
     if (thing === 'pen') return true;
 });

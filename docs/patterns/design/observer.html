@@ -83,11 +83,13 @@
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
               <p>Observer provides a subject object that maintains a list of subscribers (observers)
-and automatically notifies them when any changes occur by broadcasting notification,
-also includes subset pattern known as Publish-Subscribe.</p>
+and automatically notifies them when any changes occur by broadcasting notification.</p>
 <ul>
 <li><a href="http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#observerpatternjavascript">Addy Osmani “Javascript Design Patterns”</a></li>
 <li><a href="http://robdodson.me/blog/2012/08/16/javascript-design-patterns-observer">Rob Dodson “Javascript Observer Pattern”</a></li>
+</ul>
+<p>Also there is a pattern’s subset known as <a href="observer.html#section-9"><strong>Publish-Subscribe</strong></a>.</p>
+<ul>
 <li><a href="https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations">“Comparison between pattern implementations”</a></li>
 </ul>
 
@@ -101,6 +103,31 @@ also includes subset pattern known as Publish-Subscribe.</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2 id="observer-pattern">Observer Pattern</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p><strong>Subject</strong> - maintains list of observers, adding and removing them.</p>
 
@@ -128,11 +155,11 @@ Subject.prototype.notify = <span class="hljs-function"><span class="hljs-keyword
         </li>
         
         
-        <li id="section-4">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p><strong>Observer</strong> - provides an update interface for objects that need to be notified of subject’s changes.</p>
 
@@ -147,11 +174,11 @@ Subject.prototype.notify = <span class="hljs-function"><span class="hljs-keyword
         </li>
         
         
-        <li id="section-5">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p><strong>Concrete Subject</strong> - broadcasts notifications to observers.</p>
 
@@ -166,11 +193,11 @@ newspaper.newIssue = <span class="hljs-function"><span class="hljs-keyword">func
         </li>
         
         
-        <li id="section-6">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p><strong>Concrete Observers</strong> - implement the update interface to ensure consistent state with subject.</p>
 
@@ -188,11 +215,11 @@ jill.update = <span class="hljs-function"><span class="hljs-keyword">function</s
         </li>
         
         
-        <li id="section-7">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <h3 id="example">Example</h3>
 
@@ -204,11 +231,11 @@ newspaper.addObserver(jill);</pre></div></div>
         </li>
         
         
-        <li id="section-8">
+        <li id="section-10">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Both observers will be notified on new issue:</p>
 <p><code>I just read &quot;BREAKING! Martians do it better!&quot;.</code></p>
@@ -221,11 +248,11 @@ newspaper.addObserver(jill);</pre></div></div>
         </li>
         
         
-        <li id="section-9">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-9">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <h2 id="publish-subscribe-pattern">Publish-Subscribe Pattern</h2>
 
@@ -234,11 +261,11 @@ newspaper.addObserver(jill);</pre></div></div>
         </li>
         
         
-        <li id="section-10">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Differencies:</p>
 <ul>
@@ -293,13 +320,14 @@ newspaper.addObserver(jill);</pre></div></div>
         </li>
         
         
-        <li id="section-11">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <h3 id="example">Example</h3>
+<p>Start and stops to listen on the topic.</p>
 
             </div>
             
@@ -307,43 +335,13 @@ newspaper.addObserver(jill);</pre></div></div>
     handler: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{
         <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Received new message "%s" from %s'</span>, data.text, data.from);
     },
-    init: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p>Start listen to the topic.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        pubsub.subscribe(<span class="hljs-string">'message'</span>, <span class="hljs-keyword">this</span>.handler);
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        pubsub.subscribe(<span class="hljs-string">'message'</span>, <span class="hljs-keyword">this</span>.handler);
     },
-    close: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Stop listen to the topic.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        pubsub.unsubscribe(<span class="hljs-string">'message'</span>, <span class="hljs-keyword">this</span>.handler);
+    close: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        pubsub.unsubscribe(<span class="hljs-string">'message'</span>, <span class="hljs-keyword">this</span>.handler);
     }
-};
-<span class="hljs-keyword">var</span> gmail = {
-    message: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{</pre></div></div>
+};</pre></div></div>
             
         </li>
         
@@ -358,7 +356,9 @@ newspaper.addObserver(jill);</pre></div></div>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        pubsub.publish(<span class="hljs-string">'message'</span>, {from: <span class="hljs-string">'hello@gmail.com'</span>, text: <span class="hljs-string">'How are you?'</span>});
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> gmail = {
+    message: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+        pubsub.publish(<span class="hljs-string">'message'</span>, {from: <span class="hljs-string">'hello@gmail.com'</span>, text: <span class="hljs-string">'How are you?'</span>});
     }
 };
 

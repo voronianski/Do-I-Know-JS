@@ -48,6 +48,7 @@ var singleton = (function () {
 })();
 
 // ### Examples
+// Both method calls will return same random numbers as both example objects are initialized only once.
 var objA = new Singleton();
 var objB = new Singleton();
 console.log(objA.getRandomNumber() === objB.getRandomNumber()); // true

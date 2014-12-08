@@ -2,11 +2,17 @@
 console.log('-----> Observer Patterns');
 
 // Observer provides a subject object that maintains a list of subscribers (observers)
-// and automatically notifies them when any changes occur by broadcasting notification,
-// also includes subset pattern known as Publish-Subscribe.
+// and automatically notifies them when any changes occur by broadcasting notification.
+//
 // - [Addy Osmani "Javascript Design Patterns"](http://www.addyosmani.com/resources/essentialjsdesignpatterns/book/#observerpatternjavascript)
 // - [Rob Dodson "Javascript Observer Pattern"](http://robdodson.me/blog/2012/08/16/javascript-design-patterns-observer)
+//
+// Also there is a pattern's subset known as [**Publish-Subscribe**](observer.html#section-9).
+//
 // - ["Comparison between pattern implementations"](https://github.com/millermedeiros/js-signals/wiki/Comparison-between-different-Observer-Pattern-implementations)
+
+// Observer Pattern
+// ---
 
 // **Subject** - maintains list of observers, adding and removing them.
 function Subject () {
@@ -112,22 +118,22 @@ var pubsub = {
 };
 
 // ### Example
+// Start and stops to listen on the topic.
 var logger = {
     handler: function (data) {
         console.log('Received new message "%s" from %s', data.text, data.from);
     },
     init: function () {
-        // Start listen to the topic.
         pubsub.subscribe('message', this.handler);
     },
     close: function () {
-        // Stop listen to the topic.
         pubsub.unsubscribe('message', this.handler);
     }
 };
+
+// All subscibers that listen to `message` topic will be notified with the data.
 var gmail = {
     message: function () {
-        // All subscibers that listen to `message` topic will be notified with the data.
         pubsub.publish('message', {from: 'hello@gmail.com', text: 'How are you?'});
     }
 };

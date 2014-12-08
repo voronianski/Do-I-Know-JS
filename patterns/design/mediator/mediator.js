@@ -42,7 +42,7 @@ Runway.prototype.unblock = function () {
     console.log('Runway %s is ready to host planes', this.id);
 };
 
-// Mediator implemented as airport simulation.
+// **Mediator** implemented as airport simulation.
 var airport = {
     name: 'Paris',
 
@@ -60,7 +60,7 @@ var airport = {
 
     register: function (plane) {
         // Handing mediator reference to child objects.
-        // This could be implemented in different ways (including pub/sub, etc.).
+        // This could be implemented in different ways (including [pub/sub](observer.html#section-9), etc.).
         plane.airport = this;
 
         var runway = this.checkRunway();
